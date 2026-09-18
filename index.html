@@ -334,7 +334,7 @@
     }
 
     /* =========================
-       SAMPLES
+       SAMPLES / CAROUSEL
     ========================= */
 
     .samples {
@@ -343,10 +343,26 @@
       border-bottom: 1px solid var(--line);
     }
 
-    .sample-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 25px;
+    .sample-carousel {
+      position: relative;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .sample-window {
+      overflow: hidden;
+      border-radius: 2px;
+    }
+
+    .sample-track {
+      display: flex;
+      transition: transform 0.45s ease;
+      will-change: transform;
+    }
+
+    .sample-slide {
+      min-width: 100%;
+      padding: 0 4px;
     }
 
     .sample-card {
@@ -364,7 +380,7 @@
     }
 
     .sample-preview {
-      min-height: 220px;
+      min-height: 290px;
       position: relative;
       overflow: hidden;
       display: flex;
@@ -372,25 +388,34 @@
       justify-content: center;
       background: var(--paper);
       border-bottom: 1px solid var(--line);
+      padding: 28px;
     }
 
-    /* Portfolio preview */
+    /* Portfolio sample image */
 
     .portfolio-preview {
       width: 82%;
-      height: 155px;
+      max-width: 560px;
+      height: 205px;
       background: var(--card);
       border: 1px solid var(--line);
       box-shadow: 0 10px 25px rgba(36, 34, 32, 0.08);
-      padding: 18px;
+      padding: 22px;
       position: relative;
     }
 
     .portfolio-top {
-      height: 7px;
-      width: 55%;
+      height: 8px;
+      width: 48%;
       background: var(--pine);
-      margin-bottom: 17px;
+      margin-bottom: 19px;
+    }
+
+    .portfolio-name {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 8px;
     }
 
     .portfolio-line {
@@ -407,48 +432,170 @@
     .portfolio-boxes {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 7px;
-      margin-top: 18px;
+      gap: 9px;
+      margin-top: 20px;
     }
 
     .portfolio-box {
-      height: 38px;
+      height: 55px;
       background: var(--paper-2);
       border: 1px solid var(--line);
     }
 
-    /* Tool preview */
+    /* Calculator sample image */
 
     .tool-preview {
       width: 72%;
-      max-width: 330px;
+      max-width: 420px;
       background: var(--card);
       border: 1px solid var(--line);
-      padding: 20px;
+      padding: 24px;
       box-shadow: 0 10px 25px rgba(36, 34, 32, 0.07);
     }
 
     .tool-heading {
       width: 52%;
-      height: 8px;
+      height: 9px;
       background: var(--pine);
-      margin-bottom: 17px;
+      margin-bottom: 19px;
     }
 
     .tool-input {
-      height: 31px;
+      height: 35px;
       border: 1px solid var(--line);
-      margin-bottom: 9px;
+      margin-bottom: 10px;
       background: var(--paper);
+      position: relative;
+    }
+
+    .tool-input::after {
+      content: "";
+      position: absolute;
+      left: 10px;
+      top: 13px;
+      width: 35%;
+      height: 4px;
+      background: var(--line);
     }
 
     .tool-result {
-      margin-top: 14px;
-      padding: 10px;
+      margin-top: 15px;
+      padding: 12px;
       background: var(--paper-2);
       border-left: 3px solid var(--copper);
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       color: var(--ink-soft);
+    }
+
+    /* Financial Reset sample image */
+
+    .financial-preview {
+      width: 78%;
+      max-width: 470px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 24px;
+      box-shadow: 0 10px 25px rgba(36, 34, 32, 0.07);
+    }
+
+    .financial-title {
+      width: 58%;
+      height: 9px;
+      background: var(--pine);
+      margin-bottom: 20px;
+    }
+
+    .financial-balance {
+      border: 1px solid var(--line);
+      background: var(--paper-2);
+      padding: 17px;
+      margin-bottom: 14px;
+    }
+
+    .financial-balance-label {
+      width: 28%;
+      height: 5px;
+      background: var(--line);
+      margin-bottom: 9px;
+    }
+
+    .financial-balance-value {
+      width: 46%;
+      height: 12px;
+      background: var(--copper);
+      opacity: 0.8;
+    }
+
+    .financial-bars {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      align-items: end;
+      gap: 9px;
+      height: 82px;
+      padding-top: 8px;
+    }
+
+    .financial-bar {
+      background: var(--pine-2);
+      opacity: 0.72;
+    }
+
+    .financial-bar.one {
+      height: 38%;
+    }
+
+    .financial-bar.two {
+      height: 65%;
+    }
+
+    .financial-bar.three {
+      height: 50%;
+    }
+
+    .financial-bar.four {
+      height: 82%;
+    }
+
+    /* Digital templates sample image */
+
+    .templates-preview {
+      width: 78%;
+      max-width: 470px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .template-sheet {
+      background: var(--card);
+      border: 1px solid var(--line);
+      min-height: 175px;
+      padding: 16px;
+      box-shadow: 0 8px 20px rgba(36, 34, 32, 0.06);
+    }
+
+    .template-heading {
+      height: 7px;
+      width: 65%;
+      background: var(--pine);
+      margin-bottom: 16px;
+    }
+
+    .template-line {
+      height: 4px;
+      background: var(--line);
+      margin-bottom: 8px;
+    }
+
+    .template-line.short {
+      width: 70%;
+    }
+
+    .template-box {
+      height: 48px;
+      background: var(--paper-2);
+      border: 1px solid var(--line);
+      margin-top: 15px;
     }
 
     .sample-content {
@@ -488,6 +635,72 @@
       font-size: 1.12rem;
       font-weight: 600;
       color: var(--pine);
+    }
+
+    /* Carousel controls */
+
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 24px;
+    }
+
+    .carousel-arrow {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--pine);
+      background: transparent;
+      color: var(--pine);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.25rem;
+      border-radius: 50%;
+      transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .carousel-arrow:hover {
+      background: var(--pine);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .carousel-dots {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      padding: 0;
+      border: none;
+      border-radius: 50%;
+      background: var(--line);
+      cursor: pointer;
+      transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .carousel-dot.active {
+      background: var(--copper);
+      transform: scale(1.35);
+    }
+
+    .carousel-count {
+      text-align: center;
+      color: var(--ink-soft);
+      font-size: 0.78rem;
+      margin-top: 9px;
     }
 
     /* =========================
@@ -741,8 +954,52 @@
         padding: 62px 0;
       }
 
-      .sample-grid {
-        grid-template-columns: 1fr;
+      .sample-preview {
+        min-height: 245px;
+        padding: 20px;
+      }
+
+      .portfolio-preview {
+        width: 94%;
+        height: 175px;
+        padding: 17px;
+      }
+
+      .portfolio-box {
+        height: 42px;
+      }
+
+      .tool-preview {
+        width: 92%;
+        padding: 18px;
+      }
+
+      .financial-preview {
+        width: 94%;
+        padding: 18px;
+      }
+
+      .templates-preview {
+        width: 96%;
+        gap: 7px;
+      }
+
+      .template-sheet {
+        min-height: 140px;
+        padding: 11px;
+      }
+
+      .template-box {
+        height: 38px;
+      }
+
+      .sample-content {
+        padding: 25px;
+      }
+
+      .sample-bottom {
+        align-items: flex-start;
+        flex-direction: column;
       }
 
       .process-grid {
@@ -756,11 +1013,6 @@
 
       .rate-price {
         white-space: normal;
-      }
-
-      .sample-bottom {
-        align-items: flex-start;
-        flex-direction: column;
       }
 
       .terms-box {
@@ -836,8 +1088,6 @@
         <svg viewBox="0 0 240 220" fill="none"
           xmlns="http://www.w3.org/2000/svg">
 
-          <!-- branches -->
-
           <path
             d="M35 174C75 157 112 143 168 105"
             stroke="var(--pine)"
@@ -856,8 +1106,6 @@
             stroke-width="2"
             stroke-linecap="round"/>
 
-          <!-- leaves -->
-
           <path
             d="M89 89C77 84 72 75 76 66C87 69 92 78 89 89Z"
             fill="var(--pine-2)"/>
@@ -869,8 +1117,6 @@
           <path
             d="M108 145C96 139 92 130 96 121C107 124 112 134 108 145Z"
             fill="var(--pine-2)"/>
-
-          <!-- nest -->
 
           <path
             d="M58 163C72 148 103 141 133 147C153 151 169 163 177 177H53C54 172 55 167 58 163Z"
@@ -888,8 +1134,6 @@
             stroke="var(--pine)"
             stroke-width="4"
             stroke-linecap="round"/>
-
-          <!-- small egg -->
 
           <ellipse
             cx="115"
@@ -989,119 +1233,354 @@
       </div>
 
 
-      <div class="sample-grid">
+      <div class="sample-carousel">
+
+        <div class="sample-window">
+
+          <div class="sample-track" id="sampleTrack">
 
 
-        <!-- PORTFOLIO -->
+            <!-- SLIDE 1: PORTFOLIO -->
 
-        <div class="sample-card">
+            <div class="sample-slide">
 
-          <div class="sample-preview">
+              <div class="sample-card">
 
-            <div class="portfolio-preview">
+                <div class="sample-preview">
 
-              <div class="portfolio-top"></div>
+                  <div class="portfolio-preview">
 
-              <div class="portfolio-line"></div>
-              <div class="portfolio-line short"></div>
+                    <div class="portfolio-top"></div>
 
-              <div class="portfolio-boxes">
+                    <div class="portfolio-name">
+                      Professional Portfolio
+                    </div>
 
-                <div class="portfolio-box"></div>
-                <div class="portfolio-box"></div>
-                <div class="portfolio-box"></div>
+                    <div class="portfolio-line"></div>
+                    <div class="portfolio-line short"></div>
+
+                    <div class="portfolio-boxes">
+
+                      <div class="portfolio-box"></div>
+                      <div class="portfolio-box"></div>
+                      <div class="portfolio-box"></div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+                <div class="sample-content">
+
+                  <div class="sample-label">
+                    Demo Project
+                  </div>
+
+                  <h3>Professional Portfolio Website</h3>
+
+                  <p>
+                    A simple online portfolio for showcasing experience,
+                    services, skills, tools, and sample work.
+                  </p>
+
+
+                  <div class="sample-bottom">
+
+                    <div class="price">
+                      Starting at ₱2,500
+                    </div>
+
+                    <a href="#contact" class="btn btn-primary">
+                      Inquire
+                    </a>
+
+                  </div>
+
+                </div>
 
               </div>
 
             </div>
 
-          </div>
+
+            <!-- SLIDE 2: CALCULATOR / TRACKER -->
+
+            <div class="sample-slide">
+
+              <div class="sample-card">
+
+                <div class="sample-preview">
+
+                  <div class="tool-preview">
+
+                    <div class="tool-heading"></div>
+
+                    <div class="tool-input"></div>
+                    <div class="tool-input"></div>
+                    <div class="tool-input"></div>
+
+                    <div class="tool-result">
+                      Result / calculation / summary
+                    </div>
+
+                  </div>
+
+                </div>
 
 
-          <div class="sample-content">
+                <div class="sample-content">
 
-            <div class="sample-label">
-              Demo Project
-            </div>
+                  <div class="sample-label">
+                    Demo Project
+                  </div>
 
-            <h3>Professional Portfolio Website</h3>
+                  <h3>Calculator / Tracker</h3>
 
-            <p>
-              A simple online portfolio for showcasing experience,
-              services, skills, tools, and sample work.
-            </p>
+                  <p>
+                    A simple browser-based tool designed around a specific
+                    business, personal, or workflow need.
+                  </p>
 
 
-            <div class="sample-bottom">
+                  <div class="sample-bottom">
 
-              <div class="price">
-                Starting at ₱2,500
+                    <div class="price">
+                      Starting at ₱1,500
+                    </div>
+
+                    <a href="#contact" class="btn btn-primary">
+                      Inquire
+                    </a>
+
+                  </div>
+
+                </div>
+
               </div>
 
-              <a href="#contact" class="btn btn-primary">
-                Inquire
-              </a>
+            </div>
+
+
+            <!-- SLIDE 3: FINANCIAL RESET -->
+
+            <div class="sample-slide">
+
+              <div class="sample-card">
+
+                <div class="sample-preview">
+
+                  <div class="financial-preview">
+
+                    <div class="financial-title"></div>
+
+                    <div class="financial-balance">
+
+                      <div class="financial-balance-label"></div>
+
+                      <div class="financial-balance-value"></div>
+
+                    </div>
+
+                    <div class="financial-bars">
+
+                      <div class="financial-bar one"></div>
+                      <div class="financial-bar two"></div>
+                      <div class="financial-bar three"></div>
+                      <div class="financial-bar four"></div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+                <div class="sample-content">
+
+                  <div class="sample-label">
+                    Demo Project
+                  </div>
+
+                  <h3>Financial Reset App Tracker</h3>
+
+                  <p>
+                    A simple browser-based tool designed around a specific
+                    business, personal, or workflow need.
+                  </p>
+
+
+                  <div class="sample-bottom">
+
+                    <div class="price">
+                      Starting at ₱1,500
+                    </div>
+
+                    <a href="#contact" class="btn btn-primary">
+                      Inquire
+                    </a>
+
+                  </div>
+
+                </div>
+
+              </div>
 
             </div>
+
+
+            <!-- SLIDE 4: DIGITAL TEMPLATES -->
+
+            <div class="sample-slide">
+
+              <div class="sample-card">
+
+                <div class="sample-preview">
+
+                  <div class="templates-preview">
+
+                    <div class="template-sheet">
+
+                      <div class="template-heading"></div>
+
+                      <div class="template-line"></div>
+                      <div class="template-line"></div>
+                      <div class="template-line short"></div>
+
+                      <div class="template-box"></div>
+
+                    </div>
+
+
+                    <div class="template-sheet">
+
+                      <div class="template-heading"></div>
+
+                      <div class="template-line"></div>
+                      <div class="template-line short"></div>
+                      <div class="template-line"></div>
+
+                      <div class="template-box"></div>
+
+                    </div>
+
+
+                    <div class="template-sheet">
+
+                      <div class="template-heading"></div>
+
+                      <div class="template-line short"></div>
+                      <div class="template-line"></div>
+                      <div class="template-line"></div>
+
+                      <div class="template-box"></div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+                <div class="sample-content">
+
+                  <div class="sample-label">
+                    Demo Project
+                  </div>
+
+                  <h3>Other Digital Templates</h3>
+
+                  <p>
+                    A simple browser-based tool designed around a specific
+                    business, personal, or workflow need.
+                  </p>
+
+
+                  <div class="sample-bottom">
+
+                    <div class="price">
+                      Starting at ₱1,500
+                    </div>
+
+                    <a href="#contact" class="btn btn-primary">
+                      Inquire
+                    </a>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
 
           </div>
 
         </div>
 
 
-        <!-- DIGITAL TOOL -->
+        <!-- CAROUSEL CONTROLS -->
 
-        <div class="sample-card">
+        <div class="carousel-controls">
 
-          <div class="sample-preview">
-
-            <div class="tool-preview">
-
-              <div class="tool-heading"></div>
-
-              <div class="tool-input"></div>
-              <div class="tool-input"></div>
-              <div class="tool-input"></div>
-
-              <div class="tool-result">
-                Result / calculation / summary
-              </div>
-
-            </div>
-
-          </div>
+          <button
+            type="button"
+            class="carousel-arrow"
+            id="samplePrev"
+            aria-label="Previous sample">
+            &#8592;
+          </button>
 
 
-          <div class="sample-content">
+          <div class="carousel-dots" aria-label="Sample project navigation">
 
-            <div class="sample-label">
-              Demo Project
-            </div>
+            <button
+              type="button"
+              class="carousel-dot active"
+              data-slide="0"
+              aria-label="Go to sample 1">
+            </button>
 
-            <h3>Calculator / Tracker</h3>
+            <button
+              type="button"
+              class="carousel-dot"
+              data-slide="1"
+              aria-label="Go to sample 2">
+            </button>
 
-            <p>
-              A simple browser-based tool designed around a specific
-              business, personal, or workflow need.
-            </p>
+            <button
+              type="button"
+              class="carousel-dot"
+              data-slide="2"
+              aria-label="Go to sample 3">
+            </button>
 
-
-            <div class="sample-bottom">
-
-              <div class="price">
-                Starting at ₱1,500
-              </div>
-
-              <a href="#contact" class="btn btn-primary">
-                Inquire
-              </a>
-
-            </div>
+            <button
+              type="button"
+              class="carousel-dot"
+              data-slide="3"
+              aria-label="Go to sample 4">
+            </button>
 
           </div>
+
+
+          <button
+            type="button"
+            class="carousel-arrow"
+            id="sampleNext"
+            aria-label="Next sample">
+            &#8594;
+          </button>
 
         </div>
 
+
+        <div class="carousel-count" id="sampleCount">
+          1 of 4
+        </div>
 
       </div>
 
@@ -1481,6 +1960,48 @@
     </div>
 
   </footer>
+
+
+  <!-- CAROUSEL FUNCTIONALITY -->
+
+  <script>
+    const sampleTrack = document.getElementById("sampleTrack");
+    const samplePrev = document.getElementById("samplePrev");
+    const sampleNext = document.getElementById("sampleNext");
+    const sampleDots = document.querySelectorAll(".carousel-dot");
+    const sampleCount = document.getElementById("sampleCount");
+
+    let currentSample = 0;
+    const totalSamples = sampleDots.length;
+
+    function showSample(index) {
+      currentSample = (index + totalSamples) % totalSamples;
+
+      sampleTrack.style.transform =
+        "translateX(-" + (currentSample * 100) + "%)";
+
+      sampleDots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === currentSample);
+      });
+
+      sampleCount.textContent =
+        (currentSample + 1) + " of " + totalSamples;
+    }
+
+    samplePrev.addEventListener("click", function () {
+      showSample(currentSample - 1);
+    });
+
+    sampleNext.addEventListener("click", function () {
+      showSample(currentSample + 1);
+    });
+
+    sampleDots.forEach((dot) => {
+      dot.addEventListener("click", function () {
+        showSample(Number(dot.dataset.slide));
+      });
+    });
+  </script>
 
 </body>
 </html>
